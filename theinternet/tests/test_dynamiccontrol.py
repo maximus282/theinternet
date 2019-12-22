@@ -28,6 +28,18 @@ class LoginTest(unittest.TestCase):
 
         self.driver.get(baseURL + "dynamic_controls")
         assert dyn_contr_page.checkbox_display_status() == True
-        dyn1=dyn_contr_page.click_remove_btn()
-        # time.sleep(2)
-        assert dyn1.checkbox_display_status() == True
+        dyn_contr_page.click_remove_btn()
+        assert dyn_contr_page.assert_checkbox_dissappeared() == True
+
+    def test_checkbox_remove_add(self):
+        print("Test started: get geolocation")
+        dyn_contr_page=DynamicControlPage(self.driver)
+
+        self.driver.get(baseURL + "dynamic_controls")
+        assert dyn_contr_page.checkbox_display_status() == True
+        dyn_contr_page.click_remove_btn()
+        assert dyn_contr_page.assert_checkbox_dissappeared() == True
+        dyn_contr_page.click_add_btn()
+        # assert dyn_contr_page.assert_checkbox_appeared() == True
+
+

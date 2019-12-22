@@ -50,8 +50,8 @@ class LoginTest(unittest.TestCase):
         login_page = Loginpage(self.driver)
 
         self.driver.get(baseURL + "login")
-        login_page.log_into_app("tomsmith", "wrongpassword!")
-        assert "Your password is invalid!" in login_page.displayed_flash_message()
+        login_page.log_into_app("tomsmithaaaa", "wrongpassword!")
+        assert "Your username is invalid!" in login_page.displayed_flash_message()
 
 
     # @pytest.fixture(autouse=True)
