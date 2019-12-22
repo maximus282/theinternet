@@ -54,7 +54,9 @@ class LoginTest(unittest.TestCase):
         alert_page.accept_popup()
         assert alert_page.display_return_msg() == "You entered: " + str(my_text)
 
-    @pytest.mark.parametrize('name', ['Claire', 'Gloria', 'Haley'])
+    # TODO: parametryzowac test
+
+    # @pytest.mark.parametrize('name', ['Claire', 'Gloria', 'Haley'])
     def test_jsprompt_dismiss(self,name):
         print("Test started: JS confirmations")
         alert_page = AlertPage(self.driver)

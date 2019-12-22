@@ -4,13 +4,13 @@ from page_objects import PageObject, PageElement
 class GeolocationPage(PageObject):
     # locators
     _whereami_btn_loc = "//button"
-    _lat_loc = "#lat-value"
-    _long_loc = "#long-value"
+    _lat_loc = "lat-value"
+    _long_loc = "long-value"
 
     # elements
     whereami_btn = PageElement(xpath=_whereami_btn_loc)
-    lat_value = PageElement(css=_lat_loc)
-    long_value = PageElement(css=_long_loc)
+    lat_value = PageElement(id_=_lat_loc)
+    long_value = PageElement(id_=_long_loc)
 
     def __init__(self, driver):
         super().__init__(driver)

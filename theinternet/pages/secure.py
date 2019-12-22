@@ -7,11 +7,11 @@ class SecurePage(PageObject):
 
     #locators
     _logout_btn_loc="#content > div > a"
-    _flash_message_loc="#flash"
+    _flash_message_loc="flash"
 
     #elements
     logout_btn=PageElement(css= _logout_btn_loc)
-    flash_message=PageElement(css=_flash_message_loc)
+    flash_message=PageElement(id_=_flash_message_loc)
 
     def __init__(self, driver):
         super().__init__(driver)
