@@ -11,11 +11,6 @@ from theinternet.config.config import base_url
 from theinternet.tests.basetest import BaseTest
 
 
-def get_url():
-    print("My fixture")
-    return base_url+"javascript_alerts"
-
-
 class TestAlertPage(BaseTest):
 
     #test_data

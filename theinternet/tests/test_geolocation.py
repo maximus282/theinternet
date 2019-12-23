@@ -18,7 +18,7 @@ class TestGeolocationPage(BaseTest):
 
         self.driver.get(base_url + "geolocation")
         geolocation_page.click_whereami()
-        assert geolocation_page.assert_coordinates_presence() is True
+        assert geolocation_page.assert_coordinates_presence()
         geolocation_page.display_location()
 
 

@@ -4,6 +4,9 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from theinternet.config.config import implicit_timeout
+from theinternet.config.config import chromedriver_path
+
 
 @pytest.fixture(scope="function")
 def setup(request):
@@ -11,9 +14,9 @@ def setup(request):
     chrome_options = Options()
     chrome_options.add_experimental_option("prefs", {"profile.default_content_setting_values.geolocation": 1})
     # chrome_options.add_argument('--headless')
-    driver = webdriver.Chrome(executable_path="../driver/chromedriver",options=chrome_options)
+    driver = webdriver.Chrome(executable_path=chromedriver_path,options=chrome_options)
     driver.maximize_window()
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(implicit_timeout)
     request.cls.driver = driver
 
     yield
