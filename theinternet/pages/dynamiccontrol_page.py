@@ -2,6 +2,7 @@ from page_objects import PageObject, PageElement
 from selenium import webdriver
 import time
 
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -32,7 +33,7 @@ class DynamicControlPage(PageObject):
         self.remove_btn.click()
 
     def click_add_btn(self):
-        self.remove_btn.click()
+        self.add_btn.click()
 
     def checkbox_select_status(self):
         return self.checkbox_box.is_selected()
@@ -43,34 +44,43 @@ class DynamicControlPage(PageObject):
     def checkbox_display_status(self):
         return self.checkbox_box.is_displayed()
 
-    def wait_checkbox_invisible(self):
-        wait=WebDriverWait(self.driver,10)
+    def is_checkbox_present(self):
         try:
-            wait.until(ec.invisibility_of_element(self.checkbox_box))
-            print("Element invisible")
+            self.checkbox_box
+            print("Checkbox exists")
             return True
-        except AttributeError:
-            print("Element not located")
+        except NoSuchElementException:
+            print("Checkbox does not exist")
             return False
 
-    def wait_checkbox_visible(self):
+    def wait_checkbox_invisible(self):
+
         wait=WebDriverWait(self.driver,10)
+        wait.until(ec.invisibility_of_element(self.checkbox_box))
+        self.is_checkbox_present()
+
+    def wait_checkbox_visible(self):
         try:
-            wait.until(ec.visibility_of_element_located(self.checkbox_box))
+            wait = WebDriverWait(self.driver, 10)
+            wait.until(ec.invisibility_of_element(self.checkbox_box))
             print("Element visible")
             return True
-        except AttributeError:
+        except:
             print("Element not located")
             return False
 
     def assert_checkbox_dissappeared(self):
-        if self.wait_checkbox_invisible() == True and self.return_message_txt() == "It's gone!":
+        if self.wait_checkbox_visible() == False and self.return_message_txt() == "It's gone!":
+            print(self.wait_checkbox_visible())
+            print(self.return_message_txt())
             return True
         else:
             return False
 
     def assert_checkbox_appeared(self):
         if self.wait_checkbox_visible() == True and self.return_message_txt() == "It's back!":
+            print(self.wait_checkbox_invisible())
+            print(self.return_message_txt())
             return True
         else:
             return False

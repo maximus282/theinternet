@@ -4,18 +4,19 @@ import pytest
 from selenium import webdriver
 
 import unittest
-from theinternet.pages.geolocation import GeolocationPage
+from theinternet.pages.geolocation_page import GeolocationPage
 
-baseURL="https://the-internet.herokuapp.com/"
+from theinternet.config.config import base_url
+from theinternet.tests.basetest import BaseTest
 
-@pytest.mark.usefixtures("setup")
-class LoginTest(unittest.TestCase):
+
+class TestGeolocationPage(BaseTest):
 
     def test_get_geolocation(self):
         print("Test started: get geolocation")
         geolocation_page=GeolocationPage(self.driver)
 
-        self.driver.get(baseURL + "geolocation")
+        self.driver.get(base_url + "geolocation")
         geolocation_page.click_whereami()
         assert geolocation_page.assert_coordinates_presence() is True
         geolocation_page.display_location()

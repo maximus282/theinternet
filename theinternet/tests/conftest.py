@@ -15,6 +15,7 @@ def setup(request):
     driver.maximize_window()
     driver.implicitly_wait(10)
     request.cls.driver = driver
+
     yield
     print("Running method - tearDown")
     # time.sleep(2)
