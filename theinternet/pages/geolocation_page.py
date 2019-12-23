@@ -6,11 +6,13 @@ class GeolocationPage(PageObject):
     _whereami_btn_loc = "//button"
     _lat_loc = "lat-value"
     _long_loc = "long-value"
+    _maplink_loc="#map-link > a"
 
     # elements
     whereami_btn = PageElement(xpath=_whereami_btn_loc)
     lat_value = PageElement(id_=_lat_loc)
     long_value = PageElement(id_=_long_loc)
+    maplink=PageElement(css=_maplink_loc)
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -44,3 +46,10 @@ class GeolocationPage(PageObject):
                 return True
         except AttributeError:
             return False
+
+    def click_open_maps(self):
+        self.maplink.click()
+
+    def get_url(self):
+        return self.driver.current_url
+

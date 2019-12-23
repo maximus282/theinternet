@@ -6,20 +6,32 @@ from selenium import webdriver
 import unittest
 from theinternet.pages.geolocation_page import GeolocationPage
 
-from theinternet.config.config import base_url
+from theinternet.config.config import base_url,resource_url
 from theinternet.tests.basetest import BaseTest
+
+
+@pytest.fixture(scope="function")
+def get_url():
+    return base_url+str(resource_url.get("geolocation_url"))
 
 
 class TestGeolocationPage(BaseTest):
 
-    def test_get_geolocation(self):
-        print("Test started: get geolocation")
+    def test_get_geolocation(self,get_url):
         geolocation_page=GeolocationPage(self.driver)
 
-        self.driver.get(base_url + "geolocation")
+        self.driver.get(get_url)
         geolocation_page.click_whereami()
         assert geolocation_page.assert_coordinates_presence()
         geolocation_page.display_location()
 
+    def test_open_googlemaps(self,get_url):
+        geolocation_page = GeolocationPage(self.driver)
 
-        # assert "You logged into a secure area!" in login_page.displayed_flash_message()
+        self.driver.get(get_url)
+        geolocation_page.click_whereami()
+        assert geolocation_page.assert_coordinates_presence()
+        geolocation_page.display_location()
+        geolocation_page.click_open_maps()
+        assert "www.google.com/maps" in geolocation_page.get_url()
+
