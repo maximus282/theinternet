@@ -1,9 +1,6 @@
-import time
 
 import pytest
-from selenium import webdriver
 
-import unittest
 from theinternet.pages.geolocation_page import GeolocationPage
 
 from theinternet.config.config import base_url,resource_url

@@ -1,6 +1,4 @@
 from page_objects import PageObject, PageElement
-from selenium import webdriver
-import time
 
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
@@ -16,8 +14,8 @@ class DynamicControlPage(PageObject):
     _message_loc = "message"
     _input_field_loc = "#input-example>input"
     _input_btn_loc = "#input-example > button"
-    _gone = '//p[contains(text(),"gone")]'
-    _back = '//p[contains(text(),"back")]'
+    _gone_loc = '//p[contains(text(),"gone")]'
+    _back_loc = '//p[contains(text(),"back")]'
 
     # elements
     checkbox_box = PageElement(xpath=_checbox_loc)
@@ -93,10 +91,10 @@ class DynamicControlPage(PageObject):
             return False
 
     def assert_checkbox_dissappeared(self):
-        return self.wait_for_element_presence(self._gone)
+        return self.wait_for_element_presence(self._gone_loc)
 
     def assert_checkbox_appeared(self):
-        return self.wait_for_element_presence(self._back)
+        return self.wait_for_element_presence(self._back_loc)
 
     def assert_input_field_enabled(self):
         if self.input_field_enabled() and self.return_message_txt() == "It's enabled!":

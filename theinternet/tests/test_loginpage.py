@@ -1,9 +1,5 @@
-import time
-
 import pytest
-from selenium import webdriver
 
-import unittest
 from theinternet.pages.login_page import Loginpage
 from theinternet.pages.secure_page import SecurePage
 

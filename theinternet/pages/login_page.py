@@ -1,7 +1,4 @@
 from page_objects import PageObject, PageElement
-from selenium import webdriver
-import time
-
 
 class Loginpage(PageObject):
 
@@ -41,24 +38,4 @@ class Loginpage(PageObject):
 
     def displayed_flash_message(self):
         return self.flash_message.text
-
-    # def assert_flash_message(self):
-    #     assert "You logged out of the secure area!" in self.displayed_flash_message()
-
-
-####################################################
-
-
-# base_url="http://the-internet.herokuapp.com/login"
-# driver = webdriver.Firefox(executable_path="C:\\Users\\pl90636\\PycharmProjects\\seleniumwd2\\lib\\geckodriver.exe")
-# driver.maximize_window()
-# driver.implicitly_wait(5)
-# driver.get(base_url)
-#
-# sp = SecurePage(driver)
-# print(driver.current_url)
-# assert sp.valid_login_message(), True
-#
-# time.sleep(3)
-# driver.quit()
 

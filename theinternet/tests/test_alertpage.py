@@ -1,10 +1,7 @@
-import random
 import time
 
 import pytest
-from selenium import webdriver
 
-import unittest
 from theinternet.pages.alert_page import AlertPage
 
 from theinternet.config.config import base_url,resource_url

@@ -1,9 +1,6 @@
-import time
 
 import pytest
-from selenium import webdriver
 
-import unittest
 from theinternet.pages.dynamiccontrol_page import DynamicControlPage
 
 from theinternet.config.config import base_url,resource_url
@@ -27,7 +24,6 @@ class TestDynContrPage(BaseTest):
         self.driver.get(get_url)
         assert dyn_contr_page.checkbox_select_status() == False
         dyn_contr_page.click_checkbox()
-        time.sleep(2)
         assert dyn_contr_page.checkbox_select_status()
 
     def test_checkbox_check_uncheck(self,get_url):
@@ -73,7 +69,6 @@ class TestDynContrPage(BaseTest):
         dyn_contr_page.click_enable_btn()
         dyn_contr_page.input_send_keys(data)
         assert dyn_contr_page.assert_input_field_enabled()
-        time.sleep(3)
 
     @pytest.mark.parametrize("data", data)
     def test_input_enable_disable(self,get_url,data):

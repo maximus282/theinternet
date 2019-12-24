@@ -1,5 +1,4 @@
 from page_objects import PageObject, PageElement
-from selenium import webdriver
 import time
 
 
