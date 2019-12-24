@@ -14,6 +14,9 @@ class GeolocationPage(PageObject):
     long_value = PageElement(id_=_long_loc)
     maplink=PageElement(css=_maplink_loc)
 
+    #link
+    google_maps_link="www.google.com/maps"
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver

@@ -14,6 +14,8 @@ def get_url():
 
 class TestGeolocationPage(BaseTest):
 
+    #link
+
     def test_get_geolocation(self,get_url):
         """Scenario: click Where Am I? button"""
 
@@ -34,5 +36,5 @@ class TestGeolocationPage(BaseTest):
         assert geolocation_page.assert_coordinates_presence()
         geolocation_page.display_location()
         geolocation_page.click_open_maps()
-        assert "www.google.com/maps" in geolocation_page.get_url()
+        assert geolocation_page.google_maps_link in geolocation_page.get_url()
 
