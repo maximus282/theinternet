@@ -19,6 +19,8 @@ class TestDynContrPage(BaseTest):
     data=[("mytext1"),(""),(123)]
 
     def test_checkbox_check(self,get_url):
+        """Scenario: select the checbox"""
+
         dyn_contr_page=DynamicControlPage(self.driver)
 
         self.driver.get(get_url)
@@ -27,6 +29,8 @@ class TestDynContrPage(BaseTest):
         assert dyn_contr_page.checkbox_select_status()
 
     def test_checkbox_check_uncheck(self,get_url):
+        """Scenario: select and unselect the checbox"""
+
         dyn_contr_page=DynamicControlPage(self.driver)
 
         self.driver.get(get_url)
@@ -37,6 +41,8 @@ class TestDynContrPage(BaseTest):
         assert dyn_contr_page.checkbox_select_status() == False
 
     def test_checkbox_remove(self,get_url):
+        """Scenario: click the Remove button"""
+
         dyn_contr_page=DynamicControlPage(self.driver)
 
         self.driver.get(get_url)
@@ -45,6 +51,8 @@ class TestDynContrPage(BaseTest):
         assert dyn_contr_page.assert_checkbox_dissappeared()
 
     def test_checkbox_remove_add(self,get_url):
+        """Scenario: click the Remove button, then click Add"""
+
         dyn_contr_page=DynamicControlPage(self.driver)
 
         self.driver.get(get_url)
@@ -55,6 +63,8 @@ class TestDynContrPage(BaseTest):
         assert dyn_contr_page.assert_checkbox_appeared()
 
     def test_input_disabled(self,get_url):
+        """Scenario: assert that the input is disabled"""
+
         dyn_contr_page = DynamicControlPage(self.driver)
 
         self.driver.get(get_url)
@@ -62,6 +72,8 @@ class TestDynContrPage(BaseTest):
 
     @pytest.mark.parametrize("data", data)
     def test_input_enable(self,get_url,data):
+        """Scenario: assert that the input is disabled,enable it and try sending keys"""
+
         dyn_contr_page = DynamicControlPage(self.driver)
 
         self.driver.get(get_url)
@@ -72,6 +84,8 @@ class TestDynContrPage(BaseTest):
 
     @pytest.mark.parametrize("data", data)
     def test_input_enable_disable(self,get_url,data):
+        """Scenario: assert that the input is disabled,enable it and try sending keys, then disable"""
+
         dyn_contr_page = DynamicControlPage(self.driver)
 
         self.driver.get(get_url)

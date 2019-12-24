@@ -15,6 +15,8 @@ def get_url():
 class TestGeolocationPage(BaseTest):
 
     def test_get_geolocation(self,get_url):
+        """Scenario: click Where Am I? button"""
+
         geolocation_page=GeolocationPage(self.driver)
 
         self.driver.get(get_url)
@@ -23,6 +25,8 @@ class TestGeolocationPage(BaseTest):
         geolocation_page.display_location()
 
     def test_open_googlemaps(self,get_url):
+        """Scenario: click Where Am I? button. Then click on the See it on Google link"""
+
         geolocation_page = GeolocationPage(self.driver)
 
         self.driver.get(get_url)

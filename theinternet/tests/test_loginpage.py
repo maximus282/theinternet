@@ -21,47 +21,48 @@ class TestLoginPage(BaseTest):
 
     @pytest.mark.parametrize("user,password", valid_credentials)
     def test_my_valid_login(self,user,password,get_url):
+        """Scenario: open login page and click Login using valid credentials"""
 
         login_page = Loginpage(self.driver)
         secure_page = SecurePage(self.driver)
 
         self.driver.get(get_url)
         login_page.log_into_app(user, password)
-        assert "You logged into a secure area!" in secure_page.displayed_flash_message()
+        assert secure_page.success_login_msg in secure_page.displayed_flash_message()
 
     @pytest.mark.parametrize("user,password", valid_credentials)
     def test_valid_login_logout(self,user,password,get_url):
+        """Scenario: open login page and click Login, on the next page click Logout"""
+
         login_page = Loginpage(self.driver)
         secure_page = SecurePage(self.driver)
 
         self.driver.get(get_url)
-
         login_page.log_into_app(user,password)
-        # print (login_page.displayed_flash_message())
-        assert "You logged into a secure area!" in secure_page.displayed_flash_message()
-        # print (login_page.displayed_flash_message())
+        assert secure_page.success_login_msg in secure_page.displayed_flash_message()
         secure_page.click_logout()
-        # print (login_page.displayed_flash_message())
-        assert "You logged out of the secure area!" in login_page.displayed_flash_message()
+        assert login_page.success_logout_msg in login_page.displayed_flash_message()
 
 
     @pytest.mark.parametrize("user,password", invalid_password_credentials )
     def test_invalid_password(self,user,password,get_url):
+        """Scenario: open login page and click Login using invalid password"""
 
         login_page = Loginpage(self.driver)
 
         self.driver.get(get_url)
         login_page.log_into_app(user,password)
-        assert "Your password is invalid!" in login_page.displayed_flash_message()
+        assert login_page.invalid_pass_msg in login_page.displayed_flash_message()
 
     @pytest.mark.parametrize("user,password", invalid_username_credentials )
     def test_invalid_username(self,user,password,get_url):
+        """Scenario: open login page and click Login using invalid username"""
 
         login_page = Loginpage(self.driver)
 
         self.driver.get(get_url)
         login_page.log_into_app(user,password)
-        assert "Your username is invalid!" in login_page.displayed_flash_message()
+        assert login_page.invalid_user_msg in login_page.displayed_flash_message()
 
 
 

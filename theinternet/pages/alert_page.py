@@ -16,6 +16,13 @@ class AlertPage(PageObject):
     js_prompt_btn=PageElement(xpath=_js_prompt_loc)
     result=PageElement(id_=_result_loc)
 
+    #messages
+    alert_ok_msg="You successfuly clicked an alert"
+    conf_ok_msg="You clicked: Ok"
+    conf_dismiss_msg="You clicked: Cancel"
+    prompt_msg="You entered: "
+    prompt_dismiss_msg="You entered: null"
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -33,8 +40,7 @@ class AlertPage(PageObject):
     def handle_popup(self):
         alert_popup = self.driver.switch_to.alert
         alert_msg = alert_popup.text
-        print("Alert message: {}".format(alert_msg))
-        time.sleep(4)
+        # print("Alert message: {}".format(alert_msg))
         return alert_popup
 
     def accept_popup(self):

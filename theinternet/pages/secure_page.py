@@ -10,13 +10,19 @@ class SecurePage(PageObject):
     logout_btn=PageElement(css= _logout_btn_loc)
     flash_message=PageElement(id_=_flash_message_loc)
 
+    # messages for assert
+    success_login_msg = "You logged into a secure area!"
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
         print("Created SecurePage")
 
+    def get_flash_message_element(self):
+        return self.flash_message
+
     def displayed_flash_message(self):
-        return self.flash_message.text
+        return self.get_flash_message_element().text
 
     def click_logout(self):
         self.logout_btn.click()
