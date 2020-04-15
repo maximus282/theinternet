@@ -1,4 +1,4 @@
 # please ignore
-hello="make remote branch update"
-
+hello="changed in PY local branch - please fetch"
+addedGH="added in gh remotely"
 added="added line locally"
