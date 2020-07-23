@@ -12,10 +12,11 @@ pipeline{
                 sh 'echo $USERNAME'
                 }
         }
-            stage('build') {
+            stage('set up environment') {
             steps {
-                sh 'echo building'
                 sh 'python3 --version'
+                sh 'pip install --no-cache-dir -r requirements.txt'
+
 
 
             }
