@@ -15,5 +15,13 @@ pipeline{
 
             }
             }
+            stage('run tests') {
+            steps {
+                sh 'echo testsin progress'
+                sh 'pytest theinternet/tests/* '
+
+
+            }
+            }
         }
 }
