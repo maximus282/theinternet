@@ -1,0 +1,19 @@
+pipeline{
+    agent any
+    stages {
+        stage('initial') {
+            steps {
+                sh label: 'hello skrypt', script: 'echo \'Hello\''
+                sh 'echo $USERNAME'
+                }
+        }
+            stage('build') {
+            steps {
+                sh 'echo building'
+                sh 'python3 --version'
+
+
+            }
+            }
+        }
+}
