@@ -1,5 +1,10 @@
 pipeline{
-    agent any
+    agent {
+    docker {
+            image 'python:3.7.6-buster'
+            args '-u root'
+            }
+    }
     stages {
         stage('initial') {
             steps {
